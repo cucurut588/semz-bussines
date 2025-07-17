@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel SEMZ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #000000);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 255, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4fc3f7;
+            margin-bottom: 30px;
+        }
+        
+        .product-list {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #4fc3f7;
+        }
+        
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .product-item:last-child {
+            border-bottom: none;
+        }
+        
+        .next-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4fc3f7;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .next-btn:hover {
+            background-color: #3fb3e7;
+        }
+        
+        /* Payment Page Styles */
+        #payment-page {
+            display: none;
+        }
+        
+        .payment-method {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #4fc3f7;
+        }
+        
+        .payment-method h3 {
+            margin-top: 0;
+            color: #4fc3f7;
+        }
+        
+        .payment-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copy-btn {
+            background-color: #4fc3f7;
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .copy-btn:hover {
+            background-color: #3fb3e7;
+        }
+        
+        .qris-code {
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .qris-code img {
+            max-width: 200px;
+            border-radius: 5px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+        
+        .back-btn:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <!-- Product List Page -->
+    <div id="product-page" class="container">
+        <h1>KEBUTUHAN PANEL SEMZ</h1>
+        
+        <div class="product-list">
+            <div class="product-item">
+                <span>1GB</span>
+                <span>500P</span>
+            </div>
+            <div class="product-item">
+                <span>2GB</span>
+                <span>1K</span>
+            </div>
+            <div class="product-item">
+                <span>3GB</span>
+                <span>2K</span>
+            </div>
+            <div class="product-item">
+                <span>4GB</span>
+                <span>3K</span>
+            </div>
+            <div class="product-item">
+                <span>5GB</span>
+                <span>4K</span>
+            </div>
+            <div class="product-item">
+                <span>UNLIMITED</span>
+                <span>5K</span>
+            </div>
+            <div class="product-item">
+                <span>RESELLER PANEL</span>
+                <span>6K</span>
+            </div>
+            <div class="product-item">
+                <span>ADMIN PANEL</span>
+                <span>7K</span>
+            </div>
+            <div class="product-item">
+                <span>PT PANEL</span>
+                <span>8K</span>
+            </div>
+            <div class="product-item">
+                <span>OWNER PANEL</span>
+                <span>10K</span>
+            </div>
+            <div class="product-item">
+                <span>TANGAN KANAN PANEL</span>
+                <span>15K</span>
+            </div>
+            <div class="product-item">
+                <span>JASA BUAT WEB SEPERTI INI</span>
+                <span>7K</span>
+            </div>
+        </div>
+        
+        <button onclick="showPaymentPage()" class="next-btn">Lanjutkan Pembayaran</button>
+    </div>
+
+    <!-- Payment Page -->
+    <div id="payment-page" class="container">
+        <a href="#" class="back-btn" onclick="showProductPage()">← Kembali ke Produk</a>
+        <h1>Pembayaran</h1>
+        
+        <div class="payment-method">
+            <h3>DANA</h3>
+            <div class="payment-info">
+                <span id="dana-number">089696257495</span>
+                <button class="copy-btn" onclick="copyToClipboard('dana-number')">Salin Manual</button>
+            </div>
+        </div>
+        
+        <div class="payment-method">
+            <h3>GOPAY</h3>
+            <div class="payment-info">
+                <span id="gopay-number">Tidak Tersedia</span>
+                <button class="copy-btn" onclick="copyToClipboard('gopay-number')">Salin Manual</button>
+            </div>
+        </div>
+        
+        <div class="payment-method">
+            <h3>OVO</h3>
+            <div class="payment-info">
+                <span id="ovo-number">Tidak Tersedia</span>
+                <button class="copy-btn" onclick="copyToClipboard('ovo-number')">Salin Manual</button>
+            </div>
+        </div>
+        
+        <div class="payment-method">
+            <h3>QRIS</h3>
+            <div class="payment-info">
+                <span>Scan QR Code berikut</span>
+            </div>
+            <div class="qris-code">
+                <img src="https://img1.pixhost.to/images/7269/622815268_imgtmp.jpg" alt="QRIS Code">
+            </div>
+        </div>
+        
+        <button onclick="showOrderForm()" class="next-btn">Lanjutkan ke Form Pesanan</button>
+    </div>
+
+    <!-- Order Form Page -->
+    <div id="order-form-page" class="container" style="display: none;">
+        <a href="#" class="back-btn" onclick="showPaymentPage()">← Kembali</a>
+        <h1>Form Pesanan</h1>
+        
+        <form id="payment-form" onsubmit="sendWhatsAppMessage(event)">
+            <div style="margin-bottom: 15px;">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <label for="product">Pilih Produk:</label>
+                <select id="product" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">
+                    <option value="">Pilih produk...</option>
+                    <option value="1GB - 500P">1GB - 500P</option>
+                    <option value="2GB - 1K">2GB - 1K</option>
+                    <option value="3GB - 2K">3GB - 2K</option>
+                    <option value="4GB - 3K">4GB - 3K</option>
+                    <option value="5GB - 4K">5GB - 4K</option>
+                    <option value="UNLIMITED - 5K">UNLIMITED - 5K</option>
+                    <option value="RESELLER PANEL - 6K">RESELLER PANEL - 6K</option>
+                    <option value="ADMIN PANEL - 7K">ADMIN PANEL - 7K</option>
+                    <option value="PT PANEL - 8K">PT PANEL - 8K</option>
+                    <option value="OWNER PANEL - 10K">OWNER PANEL - 10K</option>
+                    <option value="TANGAN KANAN PANEL - 15K">TANGAN KANAN PANEL - 15K</option>
+                    <option value="JASA BUAT WEB - 7K">JASA BUAT WEB - 7K</option>
+                </select>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <label for="method">Metode Pembayaran:</label>
+                <select id="method" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">
+                    <option value="">Pilih metode...</option>
+                    <option value="DANA">DANA</option>
+                    <option value="GOPAY">GOPAY</option>
+                    <option value="OVO">OVO</option>
+                    <option value="QRIS">QRIS</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="next-btn">Kirim via WhatsApp</button>
+        </form>
+    </div>
+
+    <script>
+        function showPaymentPage() {
+            document.getElementById('product-page').style.display = 'none';
+            document.getElementById('payment-page').style.display = 'block';
+        }
+        
+        function showProductPage() {
+            document.getElementById('payment-page').style.display = 'none';
+            document.getElementById('order-form-page').style.display = 'none';
+            document.getElementById('product-page').style.display = 'block';
+            return false;
+        }
+        
+        function showOrderForm() {
+            document.getElementById('payment-page').style.display = 'none';
+            document.getElementById('order-form-page').style.display = 'block';
+        }
+        
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Nomor berhasil disalin: ' + text);
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+            });
+        }
+        
+        function sendWhatsAppMessage(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const product = document.getElementById('product').value;
+            const method = document.getElementById('method').value;
+            
+            const phoneNumber = '6283869909316';
+            const message = `👤Nama : ${name}\n📦Produk : ${product}\n💳Payment : ${method}\n\n*Tolong konfirmasi ya*`;
+            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
