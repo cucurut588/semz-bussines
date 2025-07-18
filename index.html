@@ -159,19 +159,19 @@
     </div>
 
     <!-- Order Form Page -->
-    <div id="order-form-page" class="container">
-        <a href="#" class="back-btn" onclick="showProductPage()">← Kembali ke Produk</a>
+    <div id="order-form-page" class="container" style="display: none;">
+        <a href="#" class="back-btn" onclick="showPaymentPage()">← Kembali</a>
         <h1>Form Pesanan</h1>
         
         <form id="payment-form" onsubmit="sendWhatsAppMessage(event)">
-            <div>
-                <label for="name">Nama Lengkap:</label>
-                <input type="text" id="name" required>
+            <div style="margin-bottom: 15px;">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">
             </div>
             
-            <div>
+            <div style="margin-bottom: 15px;">
                 <label for="product">Pilih Produk:</label>
-                <select id="product" required>
+                <select id="product" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">
                     <option value="">Pilih produk...</option>
                     <option value="1GB - 500P">1GB - 500P</option>
                     <option value="2GB - 1K">2GB - 1K</option>
@@ -188,20 +188,48 @@
                 </select>
             </div>
             
+            <div style="margin-bottom: 15px;">
+                <label for="method">Metode Pembayaran:</label>
+                <select id="method" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">
+                    <option value="">Pilih metode...</option>
+                    <option value="DANA">DANA</option>
+                    <option value="GOPAY">GOPAY</option>
+                    <option value="OVO">OVO</option>
+                    <option value="QRIS">QRIS</option>
+                </select>
+            </div>
+            
             <button type="submit" class="next-btn">Kirim via WhatsApp</button>
         </form>
     </div>
 
     <script>
-        function showOrderForm() {
+        function showPaymentPage() {
             document.getElementById('product-page').style.display = 'none';
-            document.getElementById('order-form-page').style.display = 'block';
+            document.getElementById('payment-page').style.display = 'block';
         }
         
         function showProductPage() {
+            document.getElementById('payment-page').style.display = 'none';
             document.getElementById('order-form-page').style.display = 'none';
             document.getElementById('product-page').style.display = 'block';
             return false;
+        }
+        
+        function showOrderForm() {
+            document.getElementById('payment-page').style.display = 'none';
+            document.getElementById('order-form-page').style.display = 'block';
+        }
+        
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Nomor berhasil disalin: ' + text);
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+            });
         }
         
         function sendWhatsAppMessage(event) {
@@ -209,9 +237,10 @@
             
             const name = document.getElementById('name').value;
             const product = document.getElementById('product').value;
+            const method = document.getElementById('method').value;
             
             const phoneNumber = '6283869909316';
-            const message = `👤Nama : ${name}\n📦Produk : ${product}\n\n*Tolong konfirmasi ya*`;
+            const message = `👤Nama : ${name}\n📦Produk : ${product}\n💳Payment : ${method}\n\n*Tolong konfirmasi ya*`;
             
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             
