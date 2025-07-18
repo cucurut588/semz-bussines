@@ -192,6 +192,15 @@
         </form>
     </div>
 
+    <div style="margin-bottom: 15px;">
+                <label for="method">Metode Pembayaran:</label>
+                <select id="method" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">
+                    <option value="">Pilih metode...</option>
+                    <option value="DANA">DANA</option>
+                    <option value="QRIS">QRIS</option>
+                </select>
+    </div>
+
     <script>
         function showOrderForm() {
             document.getElementById('product-page').style.display = 'none';
@@ -210,8 +219,8 @@
             const name = document.getElementById('name').value;
             const product = document.getElementById('product').value;
             
-            const phoneNumber = '083869909316';
-            const message = `👤Nama : ${name}\n📦Produk : ${product}\n\n*Tolong konfirmasi ya*`;
+            const phoneNumber = '6283869909316';
+            const message = `👤Nama : ${name}\n📦Produk : ${product}\n💳Payment : ${method}\n\n*Tolong konfirmasi ya*`;
             
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             
