@@ -68,52 +68,9 @@
             background-color: #3fb3e7;
         }
         
-        /* Payment Page Styles */
-        #payment-page {
+        /* Order Form Page */
+        #order-form-page {
             display: none;
-        }
-        
-        .payment-method {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #4fc3f7;
-        }
-        
-        .payment-method h3 {
-            margin-top: 0;
-            color: #4fc3f7;
-        }
-        
-        .payment-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .copy-btn {
-            background-color: #4fc3f7;
-            color: black;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        
-        .copy-btn:hover {
-            background-color: #3fb3e7;
-        }
-        
-        .qris-code {
-            text-align: center;
-            margin-top: 10px;
-        }
-        
-        .qris-code img {
-            max-width: 200px;
-            border-radius: 5px;
         }
         
         .back-btn {
@@ -130,6 +87,15 @@
         
         .back-btn:hover {
             background-color: #444;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-top: 5px;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -185,69 +151,27 @@
             </div>
             <div class="product-item">
                 <span>JASA BUAT WEB SEPERTI INI</span>
-                <span>10K</span>
+                <span>7K</span>
             </div>
         </div>
         
-        <button onclick="showPaymentPage()" class="next-btn">Lanjutkan Pembayaran</button>
-    </div>
-
-    <!-- Payment Page -->
-    <div id="payment-page" class="container">
-        <a href="#" class="back-btn" onclick="showProductPage()">← Kembali ke Produk</a>
-        <h1>Pembayaran</h1>
-        
-        <div class="payment-method">
-            <h3>DANA</h3>
-            <div class="payment-info">
-                <span id="dana-number">089696257495</span>
-                <button class="copy-btn" onclick="copyToClipboard('dana-number')">Salin Manual</button>
-            </div>
-        </div>
-        
-        <div class="payment-method">
-            <h3>GOPAY</h3>
-            <div class="payment-info">
-                <span id="gopay-number">Tidak Tersedia</span>
-                <button class="copy-btn" onclick="copyToClipboard('gopay-number')">Salin Manual</button>
-            </div>
-        </div>
-        
-        <div class="payment-method">
-            <h3>OVO</h3>
-            <div class="payment-info">
-                <span id="ovo-number">Tidak Tersedia</span>
-                <button class="copy-btn" onclick="copyToClipboard('ovo-number')">Salin Manual</button>
-            </div>
-        </div>
-        
-        <div class="payment-method">
-            <h3>QRIS</h3>
-            <div class="payment-info">
-                <span>Scan QR Code berikut</span>
-            </div>
-            <div class="qris-code">
-                <img src="https://img1.pixhost.to/images/7269/622815268_imgtmp.jpg" alt="QRIS Code">
-            </div>
-        </div>
-        
-        <button onclick="showOrderForm()" class="next-btn">Lanjutkan ke Form Pesanan</button>
+        <button onclick="showOrderForm()" class="next-btn">Lanjutkan Pembayaran</button>
     </div>
 
     <!-- Order Form Page -->
-    <div id="order-form-page" class="container" style="display: none;">
-        <a href="#" class="back-btn" onclick="showPaymentPage()">← Kembali</a>
+    <div id="order-form-page" class="container">
+        <a href="#" class="back-btn" onclick="showProductPage()">← Kembali ke Produk</a>
         <h1>Form Pesanan</h1>
         
         <form id="payment-form" onsubmit="sendWhatsAppMessage(event)">
-            <div style="margin-bottom: 15px;">
-                <label for="name">Nama:</label>
-                <input type="text" id="name" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">
+            <div>
+                <label for="name">Nama Lengkap:</label>
+                <input type="text" id="name" required>
             </div>
             
-            <div style="margin-bottom: 15px;">
+            <div>
                 <label for="product">Pilih Produk:</label>
-                <select id="product" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">
+                <select id="product" required>
                     <option value="">Pilih produk...</option>
                     <option value="1GB - 500P">1GB - 500P</option>
                     <option value="2GB - 1K">2GB - 1K</option>
@@ -264,48 +188,20 @@
                 </select>
             </div>
             
-            <div style="margin-bottom: 15px;">
-                <label for="method">Metode Pembayaran:</label>
-                <select id="method" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">
-                    <option value="">Pilih metode...</option>
-                    <option value="DANA">DANA</option>
-                    <option value="GOPAY">GOPAY</option>
-                    <option value="OVO">OVO</option>
-                    <option value="QRIS">QRIS</option>
-                </select>
-            </div>
-            
             <button type="submit" class="next-btn">Kirim via WhatsApp</button>
         </form>
     </div>
 
     <script>
-        function showPaymentPage() {
-            document.getElementById('product-page').style.display = 'none';
-            document.getElementById('payment-page').style.display = 'block';
-        }
-        
-        function showProductPage() {
-            document.getElementById('payment-page').style.display = 'none';
-            document.getElementById('order-form-page').style.display = 'none';
-            document.getElementById('product-page').style.display = 'block';
-            return false;
-        }
-        
         function showOrderForm() {
-            document.getElementById('payment-page').style.display = 'none';
+            document.getElementById('product-page').style.display = 'none';
             document.getElementById('order-form-page').style.display = 'block';
         }
         
-        function copyToClipboard(elementId) {
-            const element = document.getElementById(elementId);
-            const text = element.innerText;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Nomor berhasil disalin: ' + text);
-            }).catch(err => {
-                console.error('Gagal menyalin: ', err);
-            });
+        function showProductPage() {
+            document.getElementById('order-form-page').style.display = 'none';
+            document.getElementById('product-page').style.display = 'block';
+            return false;
         }
         
         function sendWhatsAppMessage(event) {
@@ -313,10 +209,9 @@
             
             const name = document.getElementById('name').value;
             const product = document.getElementById('product').value;
-            const method = document.getElementById('method').value;
             
-            const phoneNumber = '6283869909316';
-            const message = `👤Nama : ${name}\n📦Produk : ${product}\n💳Payment : ${method}\n\n*Tolong konfirmasi ya*`;
+            const phoneNumber = '083869909316';
+            const message = `👤Nama : ${name}\n📦Produk : ${product}\n\n*Tolong konfirmasi ya*`;
             
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             
