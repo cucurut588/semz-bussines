@@ -68,9 +68,52 @@
             background-color: #3fb3e7;
         }
         
-        /* Order Form Page */
-        #order-form-page {
+        /* Payment Page Styles */
+        #payment-page {
             display: none;
+        }
+        
+        .payment-method {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #4fc3f7;
+        }
+        
+        .payment-method h3 {
+            margin-top: 0;
+            color: #4fc3f7;
+        }
+        
+        .payment-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copy-btn {
+            background-color: #4fc3f7;
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .copy-btn:hover {
+            background-color: #3fb3e7;
+        }
+        
+        .qris-code {
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .qris-code img {
+            max-width: 200px;
+            border-radius: 5px;
         }
         
         .back-btn {
@@ -87,15 +130,6 @@
         
         .back-btn:hover {
             background-color: #444;
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            margin-top: 5px;
-            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -155,7 +189,49 @@
             </div>
         </div>
         
-        <button onclick="showOrderForm()" class="next-btn">Lanjutkan Pembayaran</button>
+        <button onclick="showPaymentPage()" class="next-btn">Lanjutkan Pembayaran</button>
+    </div>
+
+    <!-- Payment Page -->
+    <div id="payment-page" class="container">
+        <a href="#" class="back-btn" onclick="showProductPage()">← Kembali ke Produk</a>
+        <h1>Pembayaran</h1>
+        
+        <div class="payment-method">
+            <h3>DANA</h3>
+            <div class="payment-info">
+                <span id="dana-number">089696257495</span>
+                <button class="copy-btn" onclick="copyToClipboard('dana-number')">Salin</button>
+            </div>
+        </div>
+        
+        <div class="payment-method">
+            <h3>GOPAY</h3>
+            <div class="payment-info">
+                <span id="gopay-number">0838474977</span>
+                <button class="copy-btn" onclick="copyToClipboard('gopay-number')">Salin</button>
+            </div>
+        </div>
+        
+        <div class="payment-method">
+            <h3>OVO</h3>
+            <div class="payment-info">
+                <span id="ovo-number">029374783</span>
+                <button class="copy-btn" onclick="copyToClipboard('ovo-number')">Salin</button>
+            </div>
+        </div>
+        
+        <div class="payment-method">
+            <h3>QRIS</h3>
+            <div class="payment-info">
+                <span>Scan QR Code berikut</span>
+            </div>
+            <div class="qris-code">
+                <img src="https://img1.pixhost.to/images/7269/622815268_imgtmp.jpg" alt="QRIS Code">
+            </div>
+        </div>
+        
+        <button onclick="showOrderForm()" class="next-btn">Lanjutkan ke Form Pesanan</button>
     </div>
 
     <!-- Order Form Page -->
@@ -165,7 +241,7 @@
         
         <form id="payment-form" onsubmit="sendWhatsAppMessage(event)">
             <div style="margin-bottom: 15px;">
-                <label for="name">Nama:</label>
+                <label for="name">Nama Lengkap:</label>
                 <input type="text" id="name" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;">
             </div>
             
@@ -248,4 +324,4 @@
         }
     </script>
 </body>
-    </html>
+            </html>
