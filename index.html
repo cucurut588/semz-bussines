@@ -97,22 +97,6 @@
             margin-top: 5px;
             margin-bottom: 15px;
         }
-        
-        .payment-info {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-left: 4px solid #4fc3f7;
-        }
-        
-        .payment-option {
-            margin-bottom: 10px;
-        }
-        
-        .payment-option:last-child {
-            margin-bottom: 0;
-        }
     </style>
 </head>
 <body>
@@ -204,27 +188,6 @@
                 </select>
             </div>
             
-            <div class="payment-info">
-                <h3>Metode Pembayaran:</h3>
-                <div class="payment-option">
-                    <input type="radio" id="dana" name="payment" value="DANA" required>
-                    <label for="dana">DANA: 089696257495</label>
-                </div>
-                <div class="payment-option">
-                    <input type="radio" id="gopay" name="payment" value="GOPAY">
-                    <label for="gopay">GOPAY: 0838474977</label>
-                </div>
-                <div class="payment-option">
-                    <input type="radio" id="ovo" name="payment" value="OVO">
-                    <label for="ovo">OVO: 029374783</label>
-                </div>
-                <div class="payment-option">
-                    <input type="radio" id="qris" name="payment" value="QRIS">
-                    <label for="qris">QRIS (Scan gambar di bawah)</label>
-                    <img src="https://img1.pixhost.to/images/7269/622815268_imgtmp.jpg" alt="QRIS Code" style="max-width: 200px; display: block; margin-top: 10px;">
-                </div>
-            </div>
-            
             <button type="submit" class="next-btn">Kirim via WhatsApp</button>
         </form>
     </div>
@@ -246,10 +209,9 @@
             
             const name = document.getElementById('name').value;
             const product = document.getElementById('product').value;
-            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
             
             const phoneNumber = '6283869909316';
-            const message = `👤Nama : ${name}\n📦Produk : ${product}\n💳Payment : ${paymentMethod}\n\n*Tolong konfirmasi ya*`;
+            const message = `👤Nama : ${name}\n📦Produk : ${product}\n\n*Tolong konfirmasi ya*`;
             
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             
@@ -257,4 +219,4 @@
         }
     </script>
 </body>
-</html>
+    </html>
